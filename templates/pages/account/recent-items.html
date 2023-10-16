@@ -1,0 +1,18 @@
+{{#partial "page"}}
+<div class="account">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    <div class="account-container account-container--full-width">
+        {{!-- BundleB2B: page-heading is required for account navigation rendering --}}
+        <h2 class="page-heading">{{lang 'account.recent_items.heading' }}</h2>
+        {{> components/account/navigation account_page='recent_items'}}
+
+        {{#unless customer.recently_viewed_products.items}}
+            {{> components/common/alert-info (lang 'account.recent_items.no_items')}}
+        {{/unless}}
+
+        {{> components/f/category/cards products=customer.recently_viewed_products.items show_compare=false}}
+    </div>
+</div>
+{{/partial}}
+{{> layout/base}}
